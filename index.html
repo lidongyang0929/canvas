@@ -9,9 +9,29 @@
 <body>
    <canvas id="canvas"></canvas>
    <div id=actions class="actions">
-    <button id=eraser>橡皮擦</button>
-    <button id=brush>画笔</button>
+      <svg id=pen class="active icon">
+          <use xlink:href="#icon-pencil"></use>
+      </svg>
+      <svg id=eraser class="icon">
+          <use xlink:href="#icon-eraser"></use>
+      </svg>
+      <svg id=save class="icon">
+          <use xlink:href="#icon-icons_save"></use>
+      </svg> 
+      <svg id=clear class="icon">
+          <use xlink:href="#icon-clear"></use>
+      </svg> 
    </div>
+   <ol class="colors">
+     <li id=pink class="pink active"></li>
+     <li id=green class="green"></li>
+     <li id=yellow class="yellow"></li>
+   </ol>
+   <ol class="sizes">
+     <li id=thin class="thin"></li>
+     <li id=thick class="thick"></li>
+   </ol>
 </body>
 <script src="./main.js"></script>
+<script src="//at.alicdn.com/t/font_1005300_rb3n55j0aj8.js"></script>
 </html>
