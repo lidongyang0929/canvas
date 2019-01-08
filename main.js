@@ -6,6 +6,37 @@ var ctx = canvas.getContext('2d')
 
 var mouseDown = false
 var lastPoint = {x: undefined, y: undefined}
+if(document.body.ontouchstart !== undefined){
+    //触屏设备
+    canvas.ontouchstart = function(aaa){
+       mouseDown = true
+       var x = aaa.touches[0].clientX
+       var y = aaa.touches[0].clientY
+       if(eraserEnabled){
+       ctx.clearRect(x-2,y-4,4,4)
+       }else{
+       lastPoint = {x: x,y: y}
+    }
+}
+    
+    canvas.ontouchmove = function(aaa){
+      var x = aaa.touches[0].clientX
+      var y = aaa.touches[0].clientY
+      if(mouseDown){
+          if(eraserEnabled){
+             ctx.clearRect(x-2,y-2,4,4)
+      }else{
+        var newPoint = {x: x,y: y}
+        drawLine(lastPoint.x,lastPoint.y,newPoint.x,newPoint.y)
+        lastPoint = newPoint
+        }
+    } 
+    }
+    canvas.ontouchend = function(){
+        mouseDown = false
+    }
+}else{
+    //非触屏设备
 canvas.onmousedown = function(aaa){
     mouseDown = true
     var x = aaa.clientX
@@ -15,6 +46,7 @@ canvas.onmousedown = function(aaa){
     }else{
     lastPoint = {x: x,y: y}
     }
+}
 }
 //var newPoint = {x: undefined, y: undefined}
 canvas.onmousemove = function(aaa){
@@ -42,6 +74,7 @@ brush.onclick = function(){
     eraserEnabled = false
     actions.className = 'actions'
 }
+
 
 
 
