@@ -1,4 +1,4 @@
-*{margin: 0; padding: 0; overflow: hidden;}
+*{margin: 0; padding: 0; overflow-x: hidden; overflow-y: hidden;}
 ul,ol{list-style: none;}
 .icon {
     width: 1em; height: 1em;
