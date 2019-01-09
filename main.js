@@ -5,7 +5,8 @@ var lineWidth = 4
 
 
 autoSetCanvasSize(canvas)
-//stopDrop(canvas)
+
+
 
 
 
@@ -137,21 +138,23 @@ function drawLine(x1,y1,x2,y2){
     ctx.lineTo(x2,y2)
     ctx.stroke()   
 }
-function stopDrop(){
-    var lastY;
-    $(document.body).on('touchstart',function(event){
-      lastY = event.originalEvent.changed.Touches[0].clientY;  
+function stopDrop() {
+    var lastY;//最后一次y坐标点
+    $(document.body).on('touchstart', function(event) {
+        lastY = event.originalEvent.changedTouches[0].clientY;//点击屏幕时记录最后一次Y度坐标。
     });
-    $(document.body).on('touchmove',function(event){
-        var y = event.originalEvent.changed.Touches[0].clientY;
-        var st = $(this).scrollTop();
-        if (y>= lastY && st < 10){
+    $(document.body).on('touchmove', function(event) {
+        var y = event.originalEvent.changedTouches[0].clientY;
+        var st = $(this).scrollTop(); //滚动条高度
+        console.log("st = "+st);
+        if (y >= lastY && st <= 0) {//如果滚动条高度小于0，可以理解为到顶了，且是下拉情况下，阻止touchmove事件。
             lastY = y;
-            event.preventDefault();}
-            lastY = y;
-        });
-    }
-
+            event.preventDefault();
+        }
+        lastY = y;
+    });
+}
+stopDrop();
 
 
 
