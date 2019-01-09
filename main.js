@@ -2,7 +2,10 @@ var canvas = document.getElementById('canvas')
 var ctx = canvas.getContext('2d')
 var lineWidth = 4
 
+
+
 autoSetCanvasSize(canvas)
+//stopDrop(canvas)
 
 
 
@@ -134,5 +137,21 @@ function drawLine(x1,y1,x2,y2){
     ctx.lineTo(x2,y2)
     ctx.stroke()   
 }
+function stopDrop(){
+    var lastY;
+    $(document.body).on('touchstart',function(event){
+      lastY = event.originalEvent.changed.Touches[0].clientY;  
+    });
+    $(document.body).on('touchmove',function(event){
+        var y = event.originalEvent.changed.Touches[0].clientY;
+        var st = $(this).scrollTop();
+        if (y>= lastY && st < 10){
+            lastY = y;
+            event.preventDefault();}
+            lastY = y;
+        });
+    }
+
+
 
 
