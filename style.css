@@ -1,4 +1,4 @@
-*{margin: 0; padding: 0; overflow-x: hidden; overflow-y: hidden;}
+*{margin: 0; padding: 0; }
 ul,ol{list-style: none;}
 .icon {
     width: 1em; height: 1em;
@@ -6,6 +6,9 @@ ul,ol{list-style: none;}
     fill: currentColor;
     overflow: hidden;
  }
+ html,body{overflow-x: hidden; overflow-y: hidden; 
+          height:100%; width: 100%;position: fixed;}
+ 
 #canvas{
     background: white;
     position: fixed;
