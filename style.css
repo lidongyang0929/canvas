@@ -12,7 +12,6 @@ ul,ol{list-style: none;}
     position: fixed;
     top: 0;
     left: 0;
-    -webkit-overflow-scrolling: touch;
 }
 #actions{
     position: fixed;
