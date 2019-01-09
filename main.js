@@ -138,11 +138,6 @@ function drawLine(x1,y1,x2,y2){
     ctx.lineTo(x2,y2)
     ctx.stroke()   
 }
-var abc=$(document.body).scrollTop();
-        
-        if (abc>0) {
-        $(document.body).scrollTop(0);
-        }
 
 
 
